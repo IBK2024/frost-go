@@ -1,0 +1,29 @@
+[tool.poetry]
+name = "frost-go"
+version = "0.1.0"
+description = "This is a search engine made using python."
+authors = ["IBK <ibukunoluwa.adetoba@gmail.com>"]
+license = "MIT"
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.10"
+
+
+[tool.poetry.group.dev.dependencies]
+pytest = "^8.3.2"
+mypy = "^1.11.2"
+pylint = "^3.2.6"
+black = "^24.8.0"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.mypy]
+strict = true
+exclude = ["^private/.*$", "^tests/.*$"]
+
+[tool.pylint.MASTER]
+ignore-paths = ["^private/.*$", "^tests/.*$"]
+disable = ["C0114"]
