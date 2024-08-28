@@ -2,4 +2,4 @@
 /.vscode
 
 # !Cache files
-/__pycache_
+/__pycache__

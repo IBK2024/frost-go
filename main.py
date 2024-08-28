@@ -1,6 +1,6 @@
 import asyncio
 import uvicorn
-from run import app
+from run import app, background_task
 
 
 async def main() -> None:
@@ -9,6 +9,7 @@ async def main() -> None:
         - Starts the uvicorn server
         - Runs background tasks
     """
+    background_task()
     config = uvicorn.Config(app, port=5000, log_level="info", reload=True)
     server = uvicorn.Server(config)
     await server.serve()
