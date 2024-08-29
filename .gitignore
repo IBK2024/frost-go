@@ -3,6 +3,7 @@
 
 # !Cache files
 /__pycache__
+/assets
 
 # !Env
 /env/.env
