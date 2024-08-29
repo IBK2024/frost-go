@@ -1,18 +1,20 @@
-from typing import Any, Dict
-from pymongo.database import Database as db
-from pymongo.mongo_client import MongoClient as dbClient
-from pymongo.server_api import ServerApi as dbServer
+import typing as _typing
+import pymongo.database as _db
+import pymongo.mongo_client as _dbClient
+import pymongo.server_api as _dbServer
 
 
 # !Connect to database
-def database_connect(mongodb_uri: str, database_name: str) -> db[Dict[str, Any]]:
+def database_connect(mongodb_uri: str, database_name: str) -> _db.Database[_typing.Dict[str, _typing.Any]]:
     """
     Connect to database.
     Also send a ping to confirm successful connection.
     """
 
     # !Create a new client and connect to the server
-    client: dbClient[Dict[str, Any]] = dbClient(mongodb_uri, server_api=dbServer("1"))
+    client: _dbClient.MongoClient[_typing.Dict[str, _typing.Any]] = _dbClient.MongoClient(
+        mongodb_uri, server_api=_dbServer.ServerApi("1")
+    )
 
     # !Send a ping to confirm a successful connection to database
     client.admin.command("ping")

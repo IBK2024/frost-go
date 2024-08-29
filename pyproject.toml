@@ -10,8 +10,9 @@ readme = "README.md"
 python = "^3.10"
 uvicorn = "^0.30.6"
 asyncio = "^3.4.3"
-fastapi = {extras = ["all"], version = "^0.112.2"}
+fastapi = { extras = ["all"], version = "^0.112.2" }
 pymongo = "^4.8.0"
+pydantic = "^2.8.2"
 
 
 [tool.poetry.group.dev.dependencies]
@@ -31,3 +32,6 @@ exclude = ["^private/.*$", "^tests/.*$"]
 [tool.pylint.MASTER]
 ignore-paths = ["^private/.*$", "^tests/.*$"]
 disable = ["C0114"]
+
+[tool.black]
+line-length = 120
