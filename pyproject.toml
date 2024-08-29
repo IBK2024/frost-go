@@ -31,7 +31,7 @@ exclude = ["^private/.*$", "^tests/.*$"]
 
 [tool.pylint.MASTER]
 ignore-paths = ["^private/.*$", "^tests/.*$"]
-disable = ["C0114"]
+disable = ["C0114", "C0301"]
 
 [tool.black]
 line-length = 120
