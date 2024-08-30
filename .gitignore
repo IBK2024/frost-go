@@ -4,6 +4,7 @@
 # !Cache files
 /__pycache__
 /assets
+.coverage
 
 # !Env
 /env/.env

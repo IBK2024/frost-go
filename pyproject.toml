@@ -21,6 +21,9 @@ mypy = "^1.11.2"
 pylint = "^3.2.6"
 black = "^24.8.0"
 mongomock = "^4.1.2"
+coverage = "^7.6.1"
+tuna = "^0.5.11"
+py-mon = "^2.0.5"
 
 [build-system]
 requires = ["poetry-core"]

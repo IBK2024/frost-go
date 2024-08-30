@@ -1,3 +1,4 @@
+import time as _time
 import queue as _queue
 import typing as _typing
 import threading as _threading
@@ -60,6 +61,9 @@ class Crawler:
             # !Waits for all tasks to be completed
             self.threadTasks.join()
 
+            # !Waits for 10 seconds before continuing
+            _time.sleep(10)
+
     # !Pick a website from queue and crawl it
     def crawl_work(self) -> _typing.NoReturn:
         """Picks a website from queue and crawl it"""
@@ -67,3 +71,5 @@ class Crawler:
             link_in_db = [item for item in self.queue if item["id"] == self.threadTasks.get()][0]
 
             print(link_in_db)
+
+            self.threadTasks.task_done()

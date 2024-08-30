@@ -1,2 +1,3 @@
 tests/models/test_queue.py
 tests/models/test_crawled.py
+tests/crawler/test_check_robot_txt.py
