@@ -1,1 +1,2 @@
-tests/test.py
+tests/models/test_queue.py
+tests/models/test_crawled.py

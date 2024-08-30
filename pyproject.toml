@@ -20,6 +20,7 @@ pytest = "^8.3.2"
 mypy = "^1.11.2"
 pylint = "^3.2.6"
 black = "^24.8.0"
+mongomock = "^4.1.2"
 
 [build-system]
 requires = ["poetry-core"]

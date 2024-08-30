@@ -4,28 +4,27 @@ import pydantic as _pydantic
 import pymongo.collection as _collection
 import pymongo.database as _db
 from general.constants import (
-    QUEUE_COLLECTION_NAME,
+    CRAWLED_COLLECTION_NAME,
 )
 
 
-# !Queue model
-class QueueModel(_pydantic.BaseModel):
-    """Model for the items in queue collection in the database"""
+# !Crawled model
+class CrawledModel(_pydantic.BaseModel):
+    """Model for the items in crawled collection in the database"""
 
     id: float
     url: str
 
 
-# !Queue database collection
-class Queue:
-    """Queue database collection"""
+# !Crawled database collection
+class Crawled:
+    """Crawled database collection"""
 
     collection: _collection.Collection[_typing.Dict[str, _typing.Any]]
-    db: _db.Database[_typing.Dict[str, _typing.Any]]
 
     def __init__(self, db: _db.Database[_typing.Dict[str, _typing.Any]]) -> None:
         self.db = db
-        self.collection = db[QUEUE_COLLECTION_NAME]
+        self.collection = db[CRAWLED_COLLECTION_NAME]
 
     def is_exist(self, field: _typing.Dict[str, _typing.Any]) -> bool:
         """
@@ -40,18 +39,18 @@ class Queue:
 
     def add(self, url: str) -> _typing.Dict[str, _typing.Any]:
         """
-        Creates a new item in the queue collection in the database
+        Creates a new item in the crawled collection in the database
         """
 
         # !Verifies url using pydantic
-        link = QueueModel(id=_dt.datetime.today().timestamp(), url=url)
+        link = CrawledModel(id=_dt.datetime.today().timestamp(), url=url)
 
         # !Check if link already in database if it is returns it
         if self.is_exist({"url": link.url}):
             item_in_db = self.get_one({"url": link.url})
 
             if item_in_db:
-                return QueueModel(**item_in_db).model_dump()
+                return CrawledModel(**item_in_db).model_dump()
 
         # !If not in database creates a new instance.
         self.collection.insert_one(link.model_dump())
@@ -63,12 +62,11 @@ class Queue:
         """Gets one item from the database using the given filter"""
 
         item_in_db = self.collection.find_one(filter_keys)
+        if item_in_db is None:
+            return None
 
-        if item_in_db:
-            return QueueModel(**item_in_db).model_dump()
-
-        return item_in_db
+        return CrawledModel(**item_in_db).model_dump()
 
     def get(self) -> _typing.List[_typing.Dict[str, str | float]]:
         """Gets all the items in the collection"""
-        return [QueueModel(**item).model_dump() for item in self.collection.find()]
+        return [CrawledModel(**item).model_dump() for item in self.collection.find()]

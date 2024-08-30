@@ -6,7 +6,6 @@ from general.constants import (
     DATABASE_NAME,
     MONGODB_URI,
     TO_PARSE_DIRECTORY,
-    QUEUE_COLLECTION_NAME,
 )
 from general.create_directory import create_directory
 from setup.constants import DEFAULT_STARTING_LINK
@@ -30,7 +29,7 @@ def setup() -> _db.Database[_typing.Dict[str, _typing.Any]]:
     if not _path.exists(TO_PARSE_DIRECTORY):
         create_directory(TO_PARSE_DIRECTORY)
 
-    queue = _queue.Queue(db[QUEUE_COLLECTION_NAME])
+    queue = _queue.Queue(db)
     queue.add(DEFAULT_STARTING_LINK)
 
     return db
