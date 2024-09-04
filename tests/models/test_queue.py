@@ -2,8 +2,8 @@ import datetime as _datetime
 from typing import Any as _any, Generator as _generator, Literal as _literal
 import pytest as _pytest
 import mongomock as _mongomock
-import models.queue as _queue
-from general.constants import QUEUE_COLLECTION_NAME
+import src.models.queue as _queue
+from src.models.constants import QUEUE_COLLECTION_NAME
 
 
 class TestQueue:

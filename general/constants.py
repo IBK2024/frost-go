@@ -1,8 +1,0 @@
-from config.env import ENV
-
-DATABASE_NAME = "search_engine"
-MONGODB_URI = ENV["MONGODB_URI"]
-TO_PARSE_DIRECTORY = "./assets/toParse"
-QUEUE_COLLECTION_NAME = "queue"
-CRAWLED_COLLECTION_NAME = "crawled"
-MAX_NUMBER_OF_THREADS = 10

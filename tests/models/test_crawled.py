@@ -2,8 +2,8 @@ import datetime as _datetime
 from typing import Any as _any, Generator as _generator, Literal as _literal
 import pytest as _pytest
 import mongomock as _mongomock
-import models.crawled as _crawled
-from general.constants import CRAWLED_COLLECTION_NAME
+import src.models.crawled as _crawled
+from src.models.constants import CRAWLED_COLLECTION_NAME
 
 
 class TestCrawled:

@@ -1,6 +1,5 @@
 import pytest
-
-import crawler.check_robot_txt as _check_robot_txt
+import src.crawler.check_robots_txt as _check_robots_txt
 
 
 class TestCheckRobotTxt:
@@ -189,109 +188,109 @@ class TestCheckRobotTxt:
     @staticmethod
     def test_mock_robots_txt1(mock_url, mock_robots_txt1, mock_bot_name):
         """Test mock robots.txt one"""
-        result = _check_robot_txt.check_robot_txt(mock_url, mock_robots_txt1, mock_bot_name)
+        result = _check_robots_txt.check_robots_txt(mock_url, mock_robots_txt1, mock_bot_name)
         assert not result
 
     @staticmethod
     def test_mock_robots_txt2(mock_url, mock_robots_txt2, mock_bot_name):
         """Test mock robots.txt two"""
-        result = _check_robot_txt.check_robot_txt(mock_url, mock_robots_txt2, mock_bot_name)
+        result = _check_robots_txt.check_robots_txt(mock_url, mock_robots_txt2, mock_bot_name)
 
         assert result
 
     @staticmethod
     def test_mock_robots_txt3(mock_url, mock_robots_txt3, mock_bot_name):
         """Test mock robots.txt three"""
-        result = _check_robot_txt.check_robot_txt(mock_url, mock_robots_txt3, mock_bot_name)
+        result = _check_robots_txt.check_robots_txt(mock_url, mock_robots_txt3, mock_bot_name)
 
         assert result
 
     @staticmethod
     def test_mock_robots_txt4(mock_url, mock_robots_txt4, mock_bot_name):
         """Test mock robots.txt four"""
-        result = _check_robot_txt.check_robot_txt(mock_url, mock_robots_txt4, mock_bot_name)
+        result = _check_robots_txt.check_robots_txt(mock_url, mock_robots_txt4, mock_bot_name)
 
         assert not result
 
     @staticmethod
     def test_mock_robots_txt5(mock_url, mock_robots_txt5, mock_bot_name):
         """Test mock robots.txt five"""
-        result = _check_robot_txt.check_robot_txt(mock_url, mock_robots_txt5, mock_bot_name)
+        result = _check_robots_txt.check_robots_txt(mock_url, mock_robots_txt5, mock_bot_name)
 
         assert result
 
     @staticmethod
     def test_mock_robots_txt6(mock_url, mock_robots_txt6, mock_bot_name):
         """Test mock robots.txt six"""
-        result = _check_robot_txt.check_robot_txt(mock_url, mock_robots_txt6, mock_bot_name)
+        result = _check_robots_txt.check_robots_txt(mock_url, mock_robots_txt6, mock_bot_name)
 
         assert not result
 
     @staticmethod
     def test_mock_robots_txt7(mock_url, mock_robots_txt7, mock_bot_name):
         """Test mock robots.txt seven"""
-        result = _check_robot_txt.check_robot_txt(mock_url, mock_robots_txt7, mock_bot_name)
+        result = _check_robots_txt.check_robots_txt(mock_url, mock_robots_txt7, mock_bot_name)
 
         assert result
 
     @staticmethod
     def test_mock_robots_txt8(mock_url, mock_robots_txt8, mock_bot_name):
         """Test mock robots.txt eight"""
-        result = _check_robot_txt.check_robot_txt(mock_url, mock_robots_txt8, mock_bot_name)
+        result = _check_robots_txt.check_robots_txt(mock_url, mock_robots_txt8, mock_bot_name)
 
         assert not result
 
     @staticmethod
     def test_mock_robots_txt9(mock_url, mock_robots_txt9, mock_bot_name):
         """Test mock robots.txt nine"""
-        result = _check_robot_txt.check_robot_txt(mock_url, mock_robots_txt9, mock_bot_name)
+        result = _check_robots_txt.check_robots_txt(mock_url, mock_robots_txt9, mock_bot_name)
         assert not result
 
     @staticmethod
     def test_mock_robots_txt10(mock_url, mock_robots_txt10, mock_bot_name):
         """Test mock robots.txt ten"""
-        result = _check_robot_txt.check_robot_txt(mock_url, mock_robots_txt10, mock_bot_name)
+        result = _check_robots_txt.check_robots_txt(mock_url, mock_robots_txt10, mock_bot_name)
 
         assert result
 
     @staticmethod
     def test_mock_robots_txt11(mock_url, mock_robots_txt11, mock_bot_name):
         """Test mock robots.txt eleven"""
-        result = _check_robot_txt.check_robot_txt(mock_url, mock_robots_txt11, mock_bot_name)
+        result = _check_robots_txt.check_robots_txt(mock_url, mock_robots_txt11, mock_bot_name)
 
         assert result
 
     @staticmethod
     def test_mock_robots_txt12(mock_url, mock_robots_txt12, mock_bot_name):
         """Test mock robots.txt twelve"""
-        result = _check_robot_txt.check_robot_txt(mock_url, mock_robots_txt12, mock_bot_name)
+        result = _check_robots_txt.check_robots_txt(mock_url, mock_robots_txt12, mock_bot_name)
 
         assert not result
 
     @staticmethod
     def test_mock_robots_txt13(mock_url, mock_robots_txt13, mock_bot_name):
         """Test mock robots.txt thirteen"""
-        result = _check_robot_txt.check_robot_txt(mock_url, mock_robots_txt13, mock_bot_name)
+        result = _check_robots_txt.check_robots_txt(mock_url, mock_robots_txt13, mock_bot_name)
 
         assert result
 
     @staticmethod
     def test_mock_robots_txt14(mock_url, mock_robots_txt14, mock_bot_name):
         """Test mock robots.txt fourteen"""
-        result = _check_robot_txt.check_robot_txt(mock_url, mock_robots_txt14, mock_bot_name)
+        result = _check_robots_txt.check_robots_txt(mock_url, mock_robots_txt14, mock_bot_name)
 
         assert not result
 
     @staticmethod
     def test_mock_robots_txt15(mock_url, mock_robots_txt15, mock_bot_name):
         """Test mock robots.txt fifteen"""
-        result = _check_robot_txt.check_robot_txt(mock_url, mock_robots_txt15, mock_bot_name)
+        result = _check_robots_txt.check_robots_txt(mock_url, mock_robots_txt15, mock_bot_name)
 
         assert result
 
     @staticmethod
     def test_mock_robots_txt16(mock_url, mock_robots_txt16, mock_bot_name):
         """Test mock robots.txt sixteen"""
-        result = _check_robot_txt.check_robot_txt(mock_url, mock_robots_txt16, mock_bot_name)
+        result = _check_robots_txt.check_robots_txt(mock_url, mock_robots_txt16, mock_bot_name)
 
         assert not result
