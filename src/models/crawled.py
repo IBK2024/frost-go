@@ -12,6 +12,8 @@ class CrawledModel(_pydantic.BaseModel):
 
     id: float
     url: str
+    status: str
+    file_name: str
 
 
 # !Crawled database collection
@@ -35,13 +37,13 @@ class Crawled:
 
         return False
 
-    def add(self, url: str) -> _typing.Dict[str, _typing.Any]:
+    def add(self, url: str, status: str, file_name: str) -> _typing.Dict[str, _typing.Any]:
         """
         Creates a new item in the crawled collection in the database
         """
 
         # !Verifies url using pydantic
-        link = CrawledModel(id=_dt.datetime.today().timestamp(), url=url)
+        link = CrawledModel(id=_dt.datetime.today().timestamp(), url=url, status=status, file_name=file_name)
 
         # !Check if link already in database if it is returns it
         if self.is_exist({"url": link.url}):
@@ -68,3 +70,7 @@ class Crawled:
     def get(self) -> _typing.List[_typing.Dict[str, str | float]]:
         """Gets all the items in the collection"""
         return [CrawledModel(**item).model_dump() for item in self.collection.find()]
+
+    def remove(self, filter_keys: _typing.Dict[str, _typing.Any]) -> None:
+        """Removes item from database"""
+        self.collection.delete_many(filter_keys)

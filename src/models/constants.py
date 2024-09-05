@@ -1,2 +1,4 @@
-QUEUE_COLLECTION_NAME = "queue"
-CRAWLED_COLLECTION_NAME = "crawled"
+QUEUE_COLLECTION_NAME: str = "queue"
+CRAWLED_COLLECTION_NAME: str = "crawled"
+PAUSE_COLLECTION_NAME: str = "pause"
+FAILED_CRAWLED_COLLECTION_NAME: str = "failed_crawled"

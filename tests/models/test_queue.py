@@ -85,3 +85,15 @@ class TestQueue:
         item = queue.get_one({"url": mock_queue_item.url})
         assert queue.get()[0]["url"] == item["url"]
         assert queue.get()[0]["id"] == item["id"]
+
+    @staticmethod
+    def test_remove(mock_queue_item, mock_db) -> None:
+        """Test the remove model function"""
+        queue = _queue.Queue(mock_db)
+
+        queue.add(mock_queue_item.url)
+        queue.remove({"url": mock_queue_item.url})
+
+        # !Test function
+        assert len(queue.get()) == 0
+        assert queue.get_one({"url": mock_queue_item.url}) is None

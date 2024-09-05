@@ -25,7 +25,12 @@ class TestCrawled:
     @staticmethod
     def mock_crawled_item():
         """Fake crawled model item"""
-        yield _crawled.CrawledModel(id=_datetime.datetime.today().timestamp(), url="https://google.com")
+        yield _crawled.CrawledModel(
+            id=_datetime.datetime.today().timestamp(),
+            url="https://google.com",
+            status="test_status",
+            file_name="test_filename",
+        )
 
     @staticmethod
     def test_is_exist(mock_crawled_item, mock_db) -> None:
@@ -48,13 +53,15 @@ class TestCrawled:
         crawled = _crawled.Crawled(mock_db)
 
         # !Test add
-        crawled.add(mock_crawled_item.url)
+        crawled.add(mock_crawled_item.url, mock_crawled_item.status, mock_crawled_item.file_name)
         assert len(list(mock_db[CRAWLED_COLLECTION_NAME].find())) == 1
         assert list(mock_db[CRAWLED_COLLECTION_NAME].find())[0]["url"] == mock_crawled_item.url
+        assert list(mock_db[CRAWLED_COLLECTION_NAME].find())[0]["status"] == mock_crawled_item.status
+        assert list(mock_db[CRAWLED_COLLECTION_NAME].find())[0]["file_name"] == mock_crawled_item.file_name
 
         # !Test adding if url already exists
         item_id = list(mock_db[CRAWLED_COLLECTION_NAME].find())[0]["id"]
-        crawled.add(mock_crawled_item.url)
+        crawled.add(mock_crawled_item.url, mock_crawled_item.status, mock_crawled_item.file_name)
         assert len(list(mock_db[CRAWLED_COLLECTION_NAME].find())) == 1
         assert list(mock_db[CRAWLED_COLLECTION_NAME].find())[0]["url"] == mock_crawled_item.url
         assert list(mock_db[CRAWLED_COLLECTION_NAME].find())[0]["id"] == item_id
@@ -64,7 +71,7 @@ class TestCrawled:
         """Test get one model function"""
         crawled = _crawled.Crawled(mock_db)
 
-        crawled.add(mock_crawled_item.url)
+        crawled.add(mock_crawled_item.url, mock_crawled_item.status, mock_crawled_item.file_name)
 
         # !Test function
         item = list(mock_db[CRAWLED_COLLECTION_NAME].find())[0]
@@ -77,7 +84,7 @@ class TestCrawled:
         """Test get model function"""
         crawled = _crawled.Crawled(mock_db)
 
-        crawled.add(mock_crawled_item.url)
+        crawled.add(mock_crawled_item.url, mock_crawled_item.status, mock_crawled_item.file_name)
 
         # !Test function
         assert len(crawled.get()) == 1
@@ -85,3 +92,15 @@ class TestCrawled:
         item = crawled.get_one({"url": mock_crawled_item.url})
         assert crawled.get()[0]["url"] == item["url"]
         assert crawled.get()[0]["id"] == item["id"]
+
+    @staticmethod
+    def test_remove(mock_crawled_item, mock_db) -> None:
+        """Test the remove model function"""
+        crawled = _crawled.Crawled(mock_db)
+
+        crawled.add(mock_crawled_item.url, mock_crawled_item.status, mock_crawled_item.file_name)
+        crawled.remove({"url": mock_crawled_item.url})
+
+        # !Test function
+        assert len(crawled.get()) == 0
+        assert crawled.get_one({"url": mock_crawled_item.url}) is None
