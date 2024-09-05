@@ -2,8 +2,9 @@
 /.vscode
 
 # !Cache files
-/__pycache__
+*/**/__pycache__
 /assets
+.coverage
 
 # !Env
 /env/.env

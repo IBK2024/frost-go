@@ -1,1 +1,6 @@
-tests/test.py
+tests/models/test_queue.py
+tests/models/test_crawled.py
+tests/models/test_pause.py
+tests/models/test_failed_crawled.py
+tests/crawler/test_check_robot_txt.py
+tests/crawler/test_get_robot_txt_url.py
