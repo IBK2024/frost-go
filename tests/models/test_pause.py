@@ -1,7 +1,11 @@
 import datetime as _datetime
-from typing import Any as _any, Generator as _generator, Literal as _literal
-import pytest as _pytest
+from typing import Any as _any
+from typing import Generator as _generator
+from typing import Literal as _literal
+
 import mongomock as _mongomock
+import pytest as _pytest
+
 import src.models.pause as _pause
 from src.models.constants import PAUSE_COLLECTION_NAME
 

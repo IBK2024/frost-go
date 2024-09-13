@@ -1,4 +1,4 @@
-from .env import ENV
+from .config.env import ENV
 
 DATABASE_NAME = "search_engine"
 MONGODB_URI = ENV["MONGODB_URI"]

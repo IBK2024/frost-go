@@ -108,9 +108,9 @@ Some commands to know. Make sure to activate the virtual environment first:
   # You can also use `poetry run py -3 performance_test.py`
   poetry run python performance_test.py
   ```
-  If you want to see the performance visualy:
+  If you want to see the performance visually:
   ```bash
-  poetry run python3 performance_test.py
+  poetry run python performance_test.py
   poetry run tuna assets/benchmark_result.prof
   ```
 - To lint the application:
@@ -118,9 +118,9 @@ Some commands to know. Make sure to activate the virtual environment first:
   poetry run mypy .
   poetry run pylint **/*.py
   ```
-- To test the aplication:
+- To test the application:
   ```bash
-  poetry run coverage run -m pytest @tests/tests.txt && poetry run coverage report -m
+  poetry run coverage run -m pytest tests/ && poetry run coverage report -m
   ```
 
 ### When your done

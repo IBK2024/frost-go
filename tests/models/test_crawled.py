@@ -1,7 +1,11 @@
 import datetime as _datetime
-from typing import Any as _any, Generator as _generator, Literal as _literal
-import pytest as _pytest
+from typing import Any as _any
+from typing import Generator as _generator
+from typing import Literal as _literal
+
 import mongomock as _mongomock
+import pytest as _pytest
+
 import src.models.crawled as _crawled
 from src.models.constants import CRAWLED_COLLECTION_NAME
 
@@ -30,6 +34,10 @@ class TestCrawled:
             url="https://google.com",
             status="test_status",
             file_name="test_filename",
+            rank=1,
+            title="",
+            forward_links=[],
+            tokens={},
         )
 
     @staticmethod
@@ -104,3 +112,16 @@ class TestCrawled:
         # !Test function
         assert len(crawled.get()) == 0
         assert crawled.get_one({"url": mock_crawled_item.url}) is None
+
+    @staticmethod
+    def test_update(mock_crawled_item, mock_db) -> None:
+        """Test the update model function"""
+        crawled = _crawled.Crawled(mock_db)
+        new_item = crawled.add(mock_crawled_item.url, mock_crawled_item.status, mock_crawled_item.file_name)
+
+        assert new_item["url"] == mock_crawled_item.url
+
+        # !Test update
+        crawled.update({"id": new_item["id"]}, {"url": "abc"})
+        assert crawled.get_one({"id": new_item["id"]})["url"] == "abc"
+        assert not crawled.get_one({"id": new_item["id"]})["url"] == mock_crawled_item.url

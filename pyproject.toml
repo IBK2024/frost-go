@@ -8,16 +8,16 @@ readme = "README.md"
 
 [tool.poetry.dependencies]
 python = "^3.10"
-uvicorn = "^0.30.6"
 asyncio = "^3.4.3"
 fastapi = { extras = ["all"], version = "^0.112.2" }
 pymongo = "^4.8.0"
 pydantic = "^2.8.2"
 requests = "^2.32.3"
-types-requests = "^2.32.0.20240712"
+bs4 = "^0.0.2"
 
 
 [tool.poetry.group.dev.dependencies]
+uvicorn = "^0.30.6"
 pytest = "^8.3.2"
 mypy = "^1.11.2"
 pylint = "^3.2.6"
@@ -26,6 +26,8 @@ mongomock = "^4.1.2"
 coverage = "^7.6.1"
 tuna = "^0.5.11"
 py-mon = "^2.0.5"
+types-requests = "^2.32.0.20240712"
+types-beautifulsoup4 = "^4.12.0.20240907"
 
 [build-system]
 requires = ["poetry-core"]
@@ -37,7 +39,7 @@ exclude = ["^private/.*$", "^tests/.*$"]
 
 [tool.pylint.MASTER]
 ignore-paths = ["^private/.*$", "^tests/.*$"]
-disable = ["C0114", "C0301"]
+disable = ["C0114", "C0301", "W0511", "R0913"]
 
 [tool.black]
 line-length = 120

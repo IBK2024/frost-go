@@ -1,5 +1,6 @@
 import cProfile
 import pstats
+
 from src.main import background_task
 
 if __name__ == "__main__":

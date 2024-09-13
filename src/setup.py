@@ -1,10 +1,17 @@
-from os import path as _path
 import typing as _typing
+from os import path as _path
+
 import pymongo.database as _db
-from .database import database_connect
+
+from .config.database import database_connect
+from .constants import (
+    DATABASE_NAME,
+    DEFAULT_STARTING_LINK,
+    MONGODB_URI,
+    TO_PARSE_DIRECTORY,
+)
 from .general import create_directory
-from .constants import DATABASE_NAME, MONGODB_URI, TO_PARSE_DIRECTORY, DEFAULT_STARTING_LINK
-from .models import queue as _queue
+from .models import Crawled, Queue
 
 
 # !Setup fuction
@@ -24,7 +31,10 @@ def setup() -> _db.Database[_typing.Dict[str, _typing.Any]]:
     if not _path.exists(TO_PARSE_DIRECTORY):
         create_directory(TO_PARSE_DIRECTORY)
 
-    queue = _queue.Queue(db)
-    queue.add(DEFAULT_STARTING_LINK)
+    queue = Queue(db)
+    crawled = Crawled(db)
+
+    if len(crawled.get()) == 0 and len(queue.get()) == 0:
+        queue.add(DEFAULT_STARTING_LINK)
 
     return db

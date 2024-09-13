@@ -1,7 +1,11 @@
 import datetime as _datetime
-from typing import Any as _any, Generator as _generator, Literal as _literal
-import pytest as _pytest
+from typing import Any as _any
+from typing import Generator as _generator
+from typing import Literal as _literal
+
 import mongomock as _mongomock
+import pytest as _pytest
+
 import src.models.queue as _queue
 from src.models.constants import QUEUE_COLLECTION_NAME
 
