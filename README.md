@@ -115,12 +115,7 @@ Some commands to know. Make sure to activate the virtual environment first:
   ```
 - To lint the application:
   ```bash
-  poetry run mypy .
   poetry run pylint **/*.py
-  ```
-- To test the application:
-  ```bash
-  poetry run coverage run -m pytest tests/ && poetry run coverage report -m
   ```
 
 ### When your done
